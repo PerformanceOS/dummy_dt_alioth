@@ -5,19 +5,19 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 # Inherit some common Lineage stuff
 $(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 
-# Inherit from alioth device
+# Inherit from psyche device
 $(call inherit-product, $(LOCAL_PATH)/device.mk)
 
 PRODUCT_BRAND := xiaomi
-PRODUCT_DEVICE := alioth
+PRODUCT_DEVICE := psyche
 PRODUCT_MANUFACTURER := xiaomi
-PRODUCT_NAME := lineage_alioth
-PRODUCT_MODEL := M2012K11AC
+PRODUCT_NAME := lineage_psyche
+PRODUCT_MODEL := 2112123AC
 
 PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
 TARGET_VENDOR := xiaomi
-TARGET_VENDOR_PRODUCT_NAME := alioth
-PRODUCT_BUILD_PROP_OVERRIDES += PRIVATE_BUILD_DESC="qssi-user 12 SKQ1.210908.001 21.10.13 release-keys"
+TARGET_VENDOR_PRODUCT_NAME := psyche
+PRODUCT_BUILD_PROP_OVERRIDES += PRIVATE_BUILD_DESC="qssi-user 11 RKQ1.200826.002 V13.0.10.0.RLDCNXM release-keys"
 
 # Set BUILD_FINGERPRINT variable to be picked up by both system and vendor build.prop
-BUILD_FINGERPRINT := qti/qssi/qssi:12/SKQ1.210908.001/21.10.13:user/release-keys
+BUILD_FINGERPRINT := qti/qssi/qssi:11/RKQ1.200826.002/V13.0.10.0.RLDCNXM:user/release-keys

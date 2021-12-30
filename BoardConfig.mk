@@ -1,8 +1,8 @@
-DEVICE_PATH := device/xiaomi/alioth
+DEVICE_PATH := device/xiaomi/psyche
 BOARD_VENDOR := xiaomi
 
 # Security patch level
-VENDOR_SECURITY_PATCH := 2021-09-05
+VENDOR_SECURITY_PATCH := 2021-11-01
 
 # HIDL
 DEVICE_MANIFEST_FILE := $(DEVICE_PATH)/manifest.xml
@@ -25,7 +25,6 @@ DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/c2_manifest_vendor.xml
 DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/manifest.xml
 DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/manifest_android.hardware.drm@1.3-service.clearkey.xml
 DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/manifest_android.hardware.drm@1.3-service.widevine.xml
-DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/manifest_fpc.xml
 DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/manifest_vendor.dolby.hardware.dms.xml
 DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/manifest_vendor.rongcard.hardware.eid.xml
 DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/manifest_vendor.xiaomi.hardware.antdtx.xml
@@ -40,6 +39,7 @@ DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/vendor.qti.gnss@4.0-service.xml
 DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/vendor.qti.hardware.display.allocator-service.xml
 DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/vendor.qti.hardware.display.composer-service.xml
 DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/vendor.qti.hardware.servicetracker@1.2-service.xml
+DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/vendor.qti.hardware.vibrator.service.xml
 DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/vendor.xiaomi.cit.bluetooth@1.0_manifest.xml
 DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/vendor.xiaomi.cit.wifi@1.0_manifest.xml
 DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/vendor.xiaomi.hardware.micharge@1.0.xml
@@ -47,8 +47,8 @@ DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/vendor.xiaomi.hardware.mioob@1.0.xml
 DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/vendor.xiaomi.hardware.misys@1.0.xml
 DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/vendor.xiaomi.hardware.misys@2.0.xml
 DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/vendor.xiaomi.hardware.misys@3.0.xml
-DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/vendor.xiaomi.hardware.vibratorfeature.service.xml
+DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/vendor.xiaomi.hardware.vibratorfeature@1.0-service.xml
 DEVICE_MATRIX_FILE := $(DEVICE_PATH)/compatibility_matrix.xml
 DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE := $(DEVICE_PATH)/framework_compatibility_matrix.xml
 
--include vendor/xiaomi/alioth/BoardConfigVendor.mk
+-include vendor/xiaomi/psyche/BoardConfigVendor.mk
