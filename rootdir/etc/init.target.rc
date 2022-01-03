@@ -179,6 +179,7 @@ on boot
     chown system system /sys/class/backlight/panel0-backlight/brightness_clone
     chmod 0664 /sys/class/power_supply/battery/dc_thermal_levels
     chown system system /sys/class/thermal/thermal_message/sconfig
+    chown system system /sys/class/thermal/thermal_message/balance_mode
     # Load all wlan drivers
     exec_background u:r:vendor_modprobe:s0 -- /vendor/bin/modprobe -a -d /vendor/lib/modules/ qca_cld3_qca6390 qca_cld3_qca6490
 
@@ -506,3 +507,13 @@ on property:sys.boot_completed=1
     copy /vendor/etc/camera/model/dof_model/capture_policy /data/vendor/camera/model/dof_model/capture_policy
     chown cameraserver audio  /data/vendor/camera/model/dof_model/capture_policy
     chmod 0777 /data/vendor/camera/model/dof_model/capture_policy
+    mkdir /data/vendor/camera/model/ldc_model 0777 cameraserver audio
+    copy /vendor/etc/camera/model/ldc_model/ldc_cap_cache /data/vendor/camera/model/ldc_model/ldc_cap_cache
+    chown cameraserver audio  /data/vendor/camera/model/ldc_model/ldc_cap_cache
+    chmod 0777 /data/vendor/camera/model/ldc_model/ldc_cap_cache
+    copy /vendor/etc/camera/model/ldc_model/ldc_cap_model /data/vendor/camera/model/ldc_model/ldc_cap_model
+    chown cameraserver audio  /data/vendor/camera/model/ldc_model/ldc_cap_model
+    chmod 0777 /data/vendor/camera/model/ldc_model/ldc_cap_model
+    copy /vendor/etc/camera/model/ldc_model/ldc_cap_policy /data/vendor/camera/model/ldc_model/ldc_cap_policy
+    chown cameraserver audio  /data/vendor/camera/model/ldc_model/ldc_cap_policy
+    chmod 0777 /data/vendor/camera/model/ldc_model/ldc_cap_policy

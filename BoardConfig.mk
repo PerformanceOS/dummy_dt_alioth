@@ -2,7 +2,7 @@ DEVICE_PATH := device/xiaomi/alioth
 BOARD_VENDOR := xiaomi
 
 # Security patch level
-VENDOR_SECURITY_PATCH := 2021-09-05
+VENDOR_SECURITY_PATCH := 2021-12-01
 
 # HIDL
 DEVICE_MANIFEST_FILE := $(DEVICE_PATH)/manifest.xml
@@ -39,6 +39,7 @@ DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/power.xml
 DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/vendor.qti.gnss@4.0-service.xml
 DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/vendor.qti.hardware.display.allocator-service.xml
 DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/vendor.qti.hardware.display.composer-service.xml
+DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/vendor.qti.hardware.limits@1.0-service.xml
 DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/vendor.qti.hardware.servicetracker@1.2-service.xml
 DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/vendor.xiaomi.cit.bluetooth@1.0_manifest.xml
 DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/vendor.xiaomi.cit.wifi@1.0_manifest.xml

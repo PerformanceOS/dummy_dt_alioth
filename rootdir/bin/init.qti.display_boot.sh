@@ -1,8 +1,5 @@
-#! /vendor/bin/sh
-#==============================================================================
-#       init.qti.media.sh
-#
-# Copyright (c) 2020-2021, The Linux Foundation. All rights reserved.
+#!/vendor/bin/sh
+# Copyright (c) 2021, The Linux Foundation. All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are
@@ -15,7 +12,7 @@
 #       with the distribution.
 #     * Neither the name of The Linux Foundation nor the names of its
 #       contributors may be used to endorse or promote products derived
-#       from this software without specific prior written permission.
+#      from this software without specific prior written permission.
 #
 # THIS SOFTWARE IS PROVIDED "AS IS" AND ANY EXPRESS OR IMPLIED
 # WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
@@ -28,34 +25,38 @@
 # WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
 # OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
 # IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-#===============================================================================
-
-if [ -f /sys/devices/soc0/soc_id ]; then
-    soc_hwid=`cat /sys/devices/soc0/soc_id` 2> /dev/null
-else
-    soc_hwid=`cat /sys/devices/system/soc/soc0/id` 2> /dev/null
-fi
+#
+#
 
 target=`getprop ro.board.platform`
+if [ -f /sys/devices/soc0/soc_id ]; then
+    soc_hwid=`cat /sys/devices/soc0/soc_id`
+else
+    soc_hwid=`cat /sys/devices/system/soc/soc0/id`
+fi
+
 case "$target" in
-   "bengal")
-       case "$soc_hwid" in
-           441|471|473|474)
-               setprop vendor.media.target.version 2
-               sku_ver=`cat /sys/devices/platform/soc/5a00000.qcom,vidc1/sku_version` 2> /dev/null
-               if [ $sku_ver -eq 1 ]; then
-                   setprop vendor.media.target.version 3
-               fi
-               ;;
-           518)
-               setprop vendor.media.target.version 3
-               ;;
-           *)
-               sku_ver=`cat /sys/devices/platform/soc/5a00000.qcom,vidc/sku_version` 2> /dev/null
-               if [ $sku_ver -eq 1 ]; then
-                   setprop vendor.media.target.version 1
-               fi
-               ;;
-       esac
-       ;;
+    "bengal")
+    # Set property to differentiate bengal and khaje
+    # Soc Id for khaje is 518
+    case "$soc_hwid" in
+        518)
+        # Set property for khaje
+        setprop vendor.display.disable_layer_stitch 1
+        setprop vendor.display.enable_rounded_corner 1
+        setprop vendor.display.disable_rounded_corner_thread 0
+        setprop vendor.display.enable_rc_support 1
+        setprop vendor.display.enable_perf_hint_large_comp_cycle 1
+        ;;
+    esac
+    ;;
+    "lito")
+    # Set property to differentiate lito and lagoon
+    case "$soc_hwid" in
+        434|459)
+        #Set property for lagoon
+        setprop vendor.display.enable_hdr10_gpu_target 1
+        ;;
+    esac
+    ;;
 esac
