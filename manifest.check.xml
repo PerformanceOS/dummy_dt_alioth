@@ -1,9 +1,0 @@
-<!--
-    Input:
-        manifest.empty.xml
--->
-<manifest version="4.0" type="device">
-    <sepolicy>
-        <version>31.0</version>
-    </sepolicy>
-</manifest>
