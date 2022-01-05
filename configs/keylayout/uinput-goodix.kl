@@ -8,8 +8,11 @@
 # as published by the Free Software Foundation.
 #
 
-device.internal = 1
-
-keyboard.layout = uinput-fpc
-keyboard.builtIn = 1
-keyboard.orientationAware = 1
+#single click
+key  353    DPAD_CENTER  VIRTUAL
+#double click
+key  306    BUTTON_C     VIRTUAL
+# HOME --> DPAD_CENTER
+#key  102   DPAD_CENTER  VIRTUAL
+#key 105   DPAD_LEFT    VIRTUAL
+#key  106   DPAD_RIGHT   VIRTUAL
