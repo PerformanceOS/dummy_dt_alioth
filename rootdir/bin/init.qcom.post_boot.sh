@@ -573,14 +573,14 @@ function configure_zram_parameters() {
             if [ -f /sys/block/zram0/use_dedup ]; then
                 echo 1 > /sys/block/zram0/use_dedup
             fi
-#            if [ $MemTotal -le 524288 ]; then
-#                echo 402653184 > /sys/block/zram0/disksize
-#            elif [ $MemTotal -le 1048576 ]; then
-#                echo 805306368 > /sys/block/zram0/disksize
-#            else
-#                zramDiskSize=$zRamSizeMB$diskSizeUnit
-#                echo $zramDiskSize > /sys/block/zram0/disksize
-#            fi
+            if [ $MemTotal -le 524288 ]; then
+                echo 402653184 > /sys/block/zram0/disksize
+            elif [ $MemTotal -le 1048576 ]; then
+                echo 805306368 > /sys/block/zram0/disksize
+            else
+                zramDiskSize=$zRamSizeMB$diskSizeUnit
+                echo $zramDiskSize > /sys/block/zram0/disksize
+            fi
 
             # ZRAM may use more memory than it saves if SLAB_STORE_USER
             # debug option is enabled.
@@ -673,7 +673,7 @@ function configure_memory_parameters() {
     ProductName=`getprop ro.product.name`
     low_ram=`getprop ro.config.low_ram`
 
-    if [ "$ProductName" == "msmnile" ] || [ "$ProductName" == "kona" ] || [ "$ProductName" == "sdmshrike_au" ] || [ "$ProductName" == "alioth" ] ; then
+    if [ "$ProductName" == "msmnile" ] || [ "$ProductName" == "kona" ] || [ "$ProductName" == "sdmshrike_au" ] || [ "$ProductName" == "alioth" ]; then
         # Enable ZRAM
         configure_zram_parameters
         configure_read_ahead_kb_values
@@ -3129,8 +3129,11 @@ case "$target" in
             echo 100 > /proc/sys/kernel/sched_group_upmigrate
 
             # cpuset settings
-            echo 0-3 > /dev/cpuset/background/cpus
-            echo 0-3 > /dev/cpuset/system-background/cpus
+            echo 0-2     > /dev/cpuset/background/cpus
+            echo 0-3     > /dev/cpuset/system-background/cpus
+            echo 4-7     > /dev/cpuset/foreground/boost/cpus
+            echo 0-2,4-7 > /dev/cpuset/foreground/cpus
+            echo 0-7     > /dev/cpuset/top-app/cpus
 
 
             # configure governor settings for little cluster
@@ -3545,7 +3548,7 @@ case "$target" in
         echo 1 > /proc/sys/kernel/sched_conservative_pl
 
         # enable input boost
-        echo 1 > /sys/devices/system/cpu/cpu_boost/sched_boost_on_input
+        echo 2 > /sys/devices/system/cpu/cpu_boost/sched_boost_on_input
         echo "0:1516800" > /sys/devices/system/cpu/cpu_boost/input_boost_freq
         echo 120 > /sys/devices/system/cpu/cpu_boost/input_boost_ms
         echo 1 > /sys/devices/system/cpu/cpu_boost/sched_boost_on_powerkey_input
@@ -3557,7 +3560,7 @@ case "$target" in
 
         if [ `cat /sys/devices/soc0/revision` == "2.0" ]; then
              # r2.0 related changes
-             echo "0:1075200" > /sys/devices/system/cpu/cpu_boost/input_boost_freq
+             echo "0:1516800" > /sys/devices/system/cpu/cpu_boost/input_boost_freq
              echo 610000 > /sys/devices/system/cpu/cpufreq/policy0/schedutil/rtg_boost_freq
              echo 1075200 > /sys/devices/system/cpu/cpufreq/policy0/schedutil/hispeed_freq
              echo 1152000 > /sys/devices/system/cpu/cpufreq/policy6/schedutil/hispeed_freq
@@ -3713,11 +3716,11 @@ case "$target" in
         # Enable conservative pl
         echo 1 > /proc/sys/kernel/sched_conservative_pl
 
-        echo 1 > /sys/devices/system/cpu/cpu_boost/sched_boost_on_input
+        echo 2 > /sys/devices/system/cpu/cpu_boost/sched_boost_on_input
         echo "0:1516800" > /sys/devices/system/cpu/cpu_boost/input_boost_freq
         echo 120 > /sys/devices/system/cpu/cpu_boost/input_boost_ms
         echo 1 > /sys/devices/system/cpu/cpu_boost/sched_boost_on_powerkey_input
-        echo "0:1804800 1:0 2:0 3:0 4:0 5:0 6:2208000 7:2400000" > /sys/devices/system/cpu/cpu_boost/powerkey_input_boost_freq
+        echo "0:1804800 1:0 2:0 3:0 4:0 5:0 6:2208000 7:0" > /sys/devices/system/cpu/cpu_boost/powerkey_input_boost_freq
         echo 400 > /sys/devices/system/cpu/cpu_boost/powerkey_input_boost_ms
 
         # Set Memory parameters
@@ -5276,10 +5279,10 @@ case "$target" in
 	echo 1 > /sys/devices/system/cpu/cpufreq/policy0/schedutil/pl
 
 	# configure input boost settings
-	echo "0:1324800" > /sys/devices/system/cpu/cpu_boost/input_boost_freq
+	echo "0:1344000" > /sys/devices/system/cpu/cpu_boost/input_boost_freq
 	echo 120 > /sys/devices/system/cpu/cpu_boost/input_boost_ms
-        echo "0:0 1:0 2:0 3:0 4:2342400 5:0 6:0 7:2361600" > /sys/devices/system/cpu/cpu_boost/powerkey_input_boost_freq
-        echo 400 > /sys/devices/system/cpu/cpu_boost/powerkey_input_boost_ms
+	echo "0:1804800 1:0 2:0 3:0 4:2419200 5:0 6:0 7:2841600" > /sys/devices/system/cpu/cpu_boost/powerkey_input_boost_freq
+	echo 400 > /sys/devices/system/cpu/cpu_boost/powerkey_input_boost_ms
 
 	# configure governor settings for gold cluster
 	echo "schedutil" > /sys/devices/system/cpu/cpufreq/policy4/scaling_governor

@@ -38,7 +38,6 @@ DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/vendor.qti.gnss@4.0-service.xml
 DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/vendor.qti.hardware.display.allocator-service.xml
 DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/vendor.qti.hardware.display.composer-service.xml
 DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/vendor.qti.hardware.servicetracker@1.2-service.xml
-DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/vendor.qti.hardware.vibrator.service.xml
 DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/vendor.xiaomi.cit.bluetooth@1.0_manifest.xml
 DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/vendor.xiaomi.cit.wifi@1.0_manifest.xml
 DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/vendor.xiaomi.hardware.micharge@1.0.xml
@@ -46,7 +45,7 @@ DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/vendor.xiaomi.hardware.mioob@1.0.xml
 DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/vendor.xiaomi.hardware.misys@1.0.xml
 DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/vendor.xiaomi.hardware.misys@2.0.xml
 DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/vendor.xiaomi.hardware.misys@3.0.xml
-DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/vendor.xiaomi.hardware.vibratorfeature@1.0-service.xml
+DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/vendor.xiaomi.hardware.vibratorfeature.service.xml
 DEVICE_MATRIX_FILE := $(DEVICE_PATH)/compatibility_matrix.xml
 DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE := $(DEVICE_PATH)/framework_compatibility_matrix.xml
 
