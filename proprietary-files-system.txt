@@ -130,12 +130,6 @@ lib64/vendor.xiaomi.hardware.misys@1.0.so
 lib64/vendor.xiaomi.hardware.misys@2.0.so
 lib64/vendor.xiaomi.hardware.misys@3.0.so
 lib64/vendor.xiaomi.hardware.vibratorfeature@1.0.so
-manifest_vendor.xiaomi.hardware.antdtx.xml
-manifest_vendor.xiaomi.hardware.mfidoca.xml
-manifest_vendor.xiaomi.hardware.mlipay.xml
-manifest_vendor.xiaomi.hardware.mtdservice.xml
-manifest_vendor.xiaomi.hardware.tidaservice.xml
-manifest_vendor.xiaomi.hardware.vsimapp.xml
 product/etc/permissions/qti_telephony_hidl_wrapper_prd.xml
 product/etc/permissions/qti_telephony_utils_prd.xml
 product/etc/permissions/vendor.qti.hardware.data.connection-V1.0-java.xml
@@ -975,9 +969,3 @@ system_ext/priv-app/Settings/lib/arm64/libtess.so
 system_ext/priv-app/WfdService/lib/arm64/libwfdnative.so
 system_ext/priv-app/ims/lib/arm64/libimscamera_jni.so
 system_ext/priv-app/ims/lib/arm64/libimsmedia_jni.so
-vendor.xiaomi.hardware.micharge@1.0.xml
-vendor.xiaomi.hardware.mioob@1.0.xml
-vendor.xiaomi.hardware.misys@1.0.xml
-vendor.xiaomi.hardware.misys@2.0.xml
-vendor.xiaomi.hardware.misys@3.0.xml
-vendor.xiaomi.hardware.vibratorfeature@1.0-service.xml
